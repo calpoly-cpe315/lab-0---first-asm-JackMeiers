@@ -5,7 +5,15 @@ main:
 	stp	x29, x30, [sp, -16]!
 
     // Load the argument and perform the call. Like 'printf("...")' in C.
-	ldr	x0, =message
+	ldr	x0, =lineone
+	bl	printf
+	mov 	x0, 0
+
+	ldr	x0, =linetwo
+	bl	printf
+	mov	x0, 0
+
+	ldr	x0, =linethree
 	bl	printf
 
     // initialize the return value in the return register
@@ -18,5 +26,11 @@ main:
     // return from the call
 	ret
 
-message:
-	.asciz "Hello, world!\n"
+lineone:
+	.asciz "We drink merrily\n"
+
+linetwo:
+	.asciz "Egg nog, nectar of the gods\n"
+
+linethree:
+	.asciz "It's our favorite\n"
